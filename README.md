@@ -21,6 +21,8 @@ The solution is contained in two folders `client` and `server`. The client is im
 
         composer
 
+        php artisan migrate --seed
+
         php artisan serve
     ```
 

@@ -19,14 +19,19 @@ The solution is contained in two folders `client` and `server`. The client is im
 
         cd shift/server
 
-        composer
+        composer install
 
+     ```
+
+2. Rename the .env.example file at the root of your application to .env and run the following commands
+
+    ```bash
         php artisan migrate --seed
 
         php artisan serve
     ```
 
-2. Enter the following in another terminal run the included tests:
+3. Enter the following in another terminal run the included tests:
     
     ```bash
         ./vendor/bin/phpunit
@@ -37,7 +42,7 @@ The solution is contained in two folders `client` and `server`. The client is im
     ```bash
         cd shift/client
 
-        npm install 
+        npm install ( You can run `yarn install` if you prefer `yarn`)
 
         npm start
     ```

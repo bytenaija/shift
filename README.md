@@ -12,7 +12,7 @@ The solution is contained in two folders `client` and `server`. The client is im
 
 
 # Instructions
-# Server
+## Server
 1. Open a terminal and run the following commands
     ```bash
         git clone https://github.com/bytenaija/shift.git
@@ -26,4 +26,20 @@ The solution is contained in two folders `client` and `server`. The client is im
         php artisan serve
     ```
 
+2. Enter the following in another terminal run the included tests:
+    
+    ```bash
+        ./vendor/bin/phpunit
+    ```
 
+## Client
+1. Run the following code in a terminal
+    ```bash
+        cd shift/client
+
+        npm install 
+
+        npm start
+    ```
+
+2. Navigate to http://localhost:3000/ in your browser to interact with the application

@@ -52,7 +52,9 @@ class AnswersController extends Controller
             'email' => 'required',
         ]);
         
-        Answers::where('email', $request->email)->delete();
+        Answers::where('email', $request->email
+        
+        )->delete();
         $answers = $request->all();
         
         // print_r($answers);

@@ -1,73 +1,69 @@
-*{
-  font-family: 'Roboto', sans-serif;
+* {
+  font-family: "Roboto", sans-serif;
 }
-.homepage{
+.homepage {
   padding: 3rem 5rem;
 }
 
-
-
-
-
-.questions span.agree{
-  color: #00A079;
+.questions span.agree {
+  color: #00a079;
   font-size: 14px;
 }
 
-.questions span.disagree{
-  color: #FA4344;
+.questions span.disagree {
+  color: #fa4344;
   font-size: 14px;
   margin-right: 2rem;
 }
 
-.questions input[type=radio]{
+.questions input[type="radio"] {
   margin-right: 2rem;
 }
 
-.questions, .email{
+.questions,
+.email {
   width: 60%;
   margin: auto;
   padding: 2rem;
   text-align: center;
 }
 
-.answers{
+.answers {
   margin-top: 1rem;
 }
 
-.form{
+.form {
   text-align: center;
 }
 
-.form button{
+.form button {
   margin-top: 2.5rem;
-  background: #3D59FA;
+  background: #3d59fa;
   border-radius: 3px;
 }
 
-.colored{
+.colored {
   width: 50%;
   height: 100%;
-background: #A920CB;
-border-radius: 0px 3px 3px 0px;
-
+  background: #a920cb;
+  border-radius: 0px 3px 3px 0px;
 }
 
-.display-results{
+.display-results {
   width: 218px;
   height: 14.46px;
-  background: #E9ECEF;
+  background: #e9ecef;
   display: inline-block;
   margin: 0 1rem;
   color: #878787;
   margin-right: 2rem;
 }
 
-.right{
+.right {
   float: right;
 }
 
-.results{
+.results {
   width: 80%;
   margin: 3rem auto;
   padding: 2rem;
@@ -78,12 +74,12 @@ border-radius: 0px 3px 3px 0px;
   height: 30vh;
 }
 
-.display span{
+.display span {
   display: inline-block;
   width: 130px;
 }
 
-.perspective{
+.perspective {
   width: 40%;
   min-height: 100%;
   vertical-align: middle;
@@ -91,12 +87,11 @@ border-radius: 0px 3px 3px 0px;
   flex-direction: column;
   justify-content: center;
   height: 100%;
- 
 }
-.perspective p{
+.perspective p {
   font-weight: 500;
 }
 
-.results-display{
+.results-display {
   width: 60%;
 }

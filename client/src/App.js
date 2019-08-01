@@ -1,12 +1,9 @@
-import React from 'react';
-import {BrowserRouter as Router, Route, Switch} from 'react-router-dom'
-import './App.css';
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "./App.css";
 
-
-
-
-import ResultPage from './views/ResultPage';
-import HomePage from './views/Homepage';
+import ResultPage from "./views/ResultPage";
+import HomePage from "./views/Homepage";
 
 function App() {
   return (

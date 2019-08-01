@@ -52,14 +52,13 @@ class AnswersController extends Controller
             'email' => 'required',
         ]);
         
+        //Delete the previous record for this email so that the current record to be inserted is the only record available
+
         Answers::where('email', $request->email
         
         )->delete();
         $answers = $request->all();
-        
-        // print_r($answers);
-        // info($answers);
-        // $answer = Answers::create($request->all());
+       
         $all = array();
 
         $questions = Questions::all();
@@ -69,52 +68,42 @@ class AnswersController extends Controller
             $dimension = $question->dimension;
             $meaning = $question->meaning;
             $direction = $question->direction;
-
-       
-            
-            
             $dimension = str_split($dimension);
-           
+
             $ans = $answers['question '. $index];
-            if((int) $ans > 4){
-                if($direction > 0){
-                    if(!empty($all[$dimension[1]])){
-                        $all[$dimension[1]] += 1;
-                    }else{
-                        $all[$dimension[1]] = 1;
-                    }
+            
+            if($ans > 4){
+                if(!empty($all[$meaning])){
+                    $all[$meaning] += $ans;
                 }else{
-                    if(!empty($all[$dimension[0]])){
-                        $all[$dimension[0]] += 1;
-                    }else{
-                        $all[$dimension[0]] = 1;
-                    }
+                    $all[$meaning] = $ans;
                 }
-            }else if((int) $ans < 4){
-                if($direction > 0){
-                    if(!empty($all[$dimension[0]])){
-                        $all[$dimension[0]] += 1;
-                    }else{
-                        $all[$dimension[0]] = 1;
-                    }
+            }else if($ans < 4){
+                if(!empty($all[$meaning])){
+                    $all[$meaning] -= $ans;
                 }else{
-                    if(!empty($all[$dimension[1]])){
-                        $all[$dimension[1]] += 1;
+                    \Log::error("elslslslsls");
+                    $key = array_search($meaning, $dimension);
+                    \Log::error($key);
+                    // $key ^= 1;
+                    \Log::error($key);
+
+                    $key = $dimension[$key];
+                    if(!empty($all[$key])){
+                        $all[$key] += $ans;
                     }else{
-                        $all[$dimension[1]] = 1;
+                        $all[$key] = $ans;
                     }
                 }
             }else{
-            
-                if($direction > 0){
+               
                     if(!empty($all[$dimension[0]])){
-                        $all[$dimension[0]] += 1;
+                        $all[$dimension[0]] += $ans;
                     }else{
-                        $all[$dimension[0]] = 1;
+                        $all[$dimension[0]] = $ans;
                     }
-                }
             }
-
+            
             $index++;
         }
         

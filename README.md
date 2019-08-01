@@ -23,8 +23,8 @@ The solution is contained in two folders `client` and `server`. The client is im
 
      ```
 
-2. Rename the .env.example file at the root of your application to .env and run the following commands
-
+2. Rename the .env.example file at the root of your application to .env, change the Database settings to match your local environment
+    and run the following commands
     ```bash
         php artisan migrate --seed
 

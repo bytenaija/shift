@@ -59,7 +59,7 @@ class AnswersController extends Controller
         )->delete();
         $answers = $request->all();
        
-        $all = array();
+        $dimensionsAndScores = array();
 
         $questions = Questions::all();
         $perspective = '';
@@ -80,10 +80,10 @@ class AnswersController extends Controller
             // leaning towards the question (meaning)
             */
             if($ans > 4){
-                if(!empty($all[$meaning])){
-                    $all[$meaning] += $ans;
+                if(!empty($dimensionsAndScores[$meaning])){
+                    $dimensionsAndScores[$meaning] += $ans;
                 }else{
-                    $all[$meaning] = $ans;
+                    $dimensionsAndScores[$meaning] = $ans;
                 }
             
             
@@ -92,18 +92,18 @@ class AnswersController extends Controller
             // leaning away the question (meaning)
             //  Subtract the answer value from the current value of the $meaning index in the array
             // Get the index of the of the element that is not the $meaning from the dimension
-            // Add the value of the answer to that element in the $all array
+            // Add the value of the answer to that element in the $dimensionsAndScores array
             */
             }else if($ans < 4){
-                if(!empty($all[$meaning])){
-                    $all[$meaning] -= $ans;
+                if(!empty($dimensionsAndScores[$meaning])){
+                    $dimensionsAndScores[$meaning] -= $ans;
                 }else{
                     $key = array_search($meaning, $dimension);
                     $key = $dimension[$key];
-                    if(!empty($all[$key])){
-                        $all[$key] += $ans;
+                    if(!empty($dimensionsAndScores[$key])){
+                        $dimensionsAndScores[$key] += $ans;
                     }else{
-                        $all[$key] = $ans;
+                        $dimensionsAndScores[$key] = $ans;
                     }
                 }
 
@@ -114,10 +114,10 @@ class AnswersController extends Controller
             */
             }else{
                
-                    if(!empty($all[$dimension[0]])){
-                        $all[$dimension[0]] += $ans;
+                    if(!empty($dimensionsAndScores[$dimension[0]])){
+                        $dimensionsAndScores[$dimension[0]] += $ans;
                     }else{
-                        $all[$dimension[0]] = $ans;
+                        $dimensionsAndScores[$dimension[0]] = $ans;
                     }
             }
             
@@ -132,9 +132,9 @@ class AnswersController extends Controller
         // Else add the second letter
         // If one of the letter does not exist and the other one does, add the letter that exist to the perpective
         */
-        if(array_key_exists('E', $all)){
-            if(array_key_exists('I', $all)){
-                if($all['E'] >= $all['I']){
+        if(array_key_exists('E', $dimensionsAndScores)){
+            if(array_key_exists('I', $dimensionsAndScores)){
+                if($dimensionsAndScores['E'] >= $dimensionsAndScores['I']){
                     $perspective .= 'E';
                 }else{
                     $perspective .= 'I';
@@ -146,9 +146,9 @@ class AnswersController extends Controller
             $perspective .= 'I';
         }
        
-        if(array_key_exists('S', $all)){
-            if(array_key_exists('N', $all)){
-                if($all['S'] >= $all['N']){
+        if(array_key_exists('S', $dimensionsAndScores)){
+            if(array_key_exists('N', $dimensionsAndScores)){
+                if($dimensionsAndScores['S'] >= $dimensionsAndScores['N']){
                     $perspective .= 'S';
                 }else{
                     $perspective .= 'N';
@@ -160,9 +160,9 @@ class AnswersController extends Controller
             $perspective .= 'N';
         }
 
-        if(array_key_exists('T', $all)){
-            if(array_key_exists('F', $all)){
-                if($all['T'] >= $all['F']){
+        if(array_key_exists('T', $dimensionsAndScores)){
+            if(array_key_exists('F', $dimensionsAndScores)){
+                if($dimensionsAndScores['T'] >= $dimensionsAndScores['F']){
                     $perspective .= 'T';
                 }else{
                     $perspective .= 'F';
@@ -174,9 +174,9 @@ class AnswersController extends Controller
             $perspective .= 'F';
         }
 
-        if(array_key_exists('J', $all)){
-            if(array_key_exists('P', $all)){
-                if($all['J'] >= $all['P']){
+        if(array_key_exists('J', $dimensionsAndScores)){
+            if(array_key_exists('P', $dimensionsAndScores)){
+                if($dimensionsAndScores['J'] >= $dimensionsAndScores['P']){
                     $perspective .= 'J';
                     
                 }else{

@@ -15,7 +15,6 @@ const Homepage = props => {
   useEffect(() => {
     const getQuestions = async () => {
       const { data } = await axios.get("http://localhost:8000/api/questions");
-      console.log(data);
       setQuestions(data);
     };
 
@@ -23,7 +22,6 @@ const Homepage = props => {
   }, [setQuestions]);
 
   const handleChange = ({ target }) => {
-    console.log(target.name, target.value);
     const { name, value } = target;
     const currentResponse = { ...response };
     currentResponse[name] = value;
